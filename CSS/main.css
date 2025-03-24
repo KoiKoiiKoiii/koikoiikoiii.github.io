@@ -1,120 +1,105 @@
     .navbar {
         z-index: 2;
-
+        font-size: 2vh;
+        overflow-x: hidden;
         overflow: hidden;
-        background-color: #626262;
+        white-space: nowrap;
+        background-color: #111;
         position: sticky;
         top: 0px;
-        filter: drop-shadow(0px 0px 1px #363636);
+        padding-left: calc(49% - 172px);
+        padding-right:50%;
+        margin-left:auto;
+        margin-right:auto;
+        height:6vh;
+        filter: drop-shadow(0px 0px 10px #000);
     }
-    html {
-        scroll-behavior: smooth;
+
+    .link-holder {
+        display:flex;
+        font-size:clamp(17px, 3vw, 2vh);
     }
+
     .selected {
-        float: left;
-        padding: 20px 20px;
-        color: #363636;
+        padding: 10px;
+        color: #999;
         display: block;
+        float: left;
         text-align: center;
-        filter: drop-shadow(4px 4px 3px #363636);
-        text-decoration:none
-
-
+        filter: drop-shadow(0px 0px 10px #000);
+        text-decoration: none
     }
 
     .tobe {
-        float: left;
-        padding: 20px 20px;
+        padding: 10px;
         color: #fff;
+        float: left;
         display: block;
         text-align: center;
-        filter: drop-shadow(4px 4px 3px #363636);
-        text-decoration:none;
+        filter: drop-shadow(0px 0px 10px #000);
+        text-decoration: none;
 
     }
 
-
-
     .tobe:hover {
-        background-color: #626262;
+        background-color: #222;
         transition: all 0.3s ease-in-out;
     }
 
     .header {
         display: block;
         text-align: center;
-        font-size: 40px;
-        padding: 1px;
-        margin-top: -10px;
+        font-size: 4vh;
+        padding: 1%;
+        margin-top: -1%;
         color: #fff;
-        background-image: url('../IMG/Space.png');
-        background-size: cover;
-        background-repeat: no-repeat;
+    }
 
+    .background-video {
+        display:block;
+        overflow:hidden;
+        object-fit: cover;
+        position:absolute;
+        z-index:-1;
+        top:0px;
+        left:0px;
+        height:30vh;
+        width:100%;
     }
 
     .header h1 {
-        filter: drop-shadow(4px 4px 1px #363636);
+        filter: drop-shadow(4px 4px 1px #000);
     }
 
-    body {
-        position: relative;
-        background-color: #f3f6ff;
-        margin: 0;
-    }
 
-    .container,
-    .container2,
-    .socials {
-        font-family: Helvetica, Arial, sans-serif;
-        font-size: 1.25em;
-        background-color: #f3f6ff;
-        text-align: center;
-        letter-spacing: 1px;
 
-    }
 
-    .container {
-        margin: 20%;
-        margin-top: -2%;
-        margin-bottom: 8%;
-    }
 
-    .container2 {
-        font-size: 1.25em;
-        margin: 0%;
-        margin-top: 0%;
-        margin-bottom: -100%;
-        background-color: #626262;
-        color: #f3f6ff;
-    }
 
-    .socials {
-        font-size: 1.25em;
-        margin: 20%;
-        margin-top: 100%;
-        margin-bottom: 10%;
-    }
+
+
+
+
 
 
     .aboutdesc {
-        padding-left: 8%;
-        padding-right: 8%;
+        padding-left: max(2vw, 40px);
+        padding-right: max(2vw, 40px);
+        /*min, preferred, max*/
         color: #585a61;
         letter-spacing: 1px;
     }
 
     .aboutme {
-        padding-top: 4%;
-        margin-top: 100px;
-        width: 200px;
+        width: min(calc(30vw + 150px), 200px, 150px);
     }
 
     .twitch {
-        filter: drop-shadow(4px 4px 1px #363636);
         position: relative;
-        right: 300px;
+        right: 0%;
         margin-top: 4%;
+        width: 35%;
+        height: 360px;
         margin-bottom: 4%;
     }
 
@@ -128,10 +113,11 @@
 
     .twitchdesc {
         position: absolute;
-        right: 90px;
+        right: 10%;
         margin-left: 55%;
         margin-right: 15%;
         margin-top: 7%;
+        margin-bottom: 4%;
     }
 
     .link-btn {
@@ -154,17 +140,9 @@
     }
 
     .socialimg {
-        padding-top: 4%;
-        margin-top: 100px;
         width: 200px;
     }
 
-    .socialdesc {
-        padding-left: 8%;
-        padding-right: 8%;
-        color: #363636;
-        letter-spacing: 1px;
-    }
 
     .link-wrap[data-v-1c2855b0] {
         display: inline-block;

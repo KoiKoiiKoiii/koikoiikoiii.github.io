@@ -1,0 +1,61 @@
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+    body {
+        font-family: 'Pacifico', cursive;
+    }
+
+
+    html,
+    body {
+        scroll-behavior: smooth;
+        overflow-x: visible;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        position: relative;
+        background-color: #f3f6ff;
+        min-height: 100vh;
+    }
+
+    .box, .box2, .footer {
+        font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .box {
+        margin-top: max(9vh, 8px);
+        margin-bottom: max(9vh, 8px);
+        font-size: 2vh;
+        background-color: #f3f6ff;
+        text-align: center;
+        letter-spacing: 1px;
+        padding-left: 8px;
+        padding-right: 8px;
+        color: #363636;
+        letter-spacing: 1px;
+    }
+
+    .box2 {
+        font-size: 2vh;
+        background-color: #333;
+        background-image: url("../IMG/ColoredSpace.png");
+        text-align: center;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size: 100%;
+        letter-spacing: 1px;
+        filter: drop-shadow(0px 0px 10px #000);
+    }
+
+    .wrapper {
+        display: grid;
+        grid-template-rows: auto;
+    }
+
+    .footer {
+        padding: 20px;
+        text-align: left;
+        margin-top: auto;
+        /* Push footer to the bottom */
+    }
