@@ -20,6 +20,47 @@
     height: auto;
   }
 }
+.mobile-menu-button {
+  display: none;
+  font-size: 1.5rem;
+  background-color: #111;
+  color: white;
+  padding: 12px 20px;
+  text-align: left;
+  cursor: pointer;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-button {
+    display: block;
+  }
+
+  .navbar {
+    display: none;
+    flex-direction: column;
+    background-color: #111;
+    position: relative;
+    width: 100%;
+  }
+
+  .navbar.active {
+    display: flex;
+  }
+
+  .link-holder {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .link-holder a {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #333;
+  }
+}
 .navbar {
   z-index: 2;
   font-size: 2vh;
