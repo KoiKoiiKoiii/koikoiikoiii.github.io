@@ -182,9 +182,19 @@
     </script>
     <script>
         function toggleMobileMenu() {
-          const navbar = document.querySelector('.navbar');
-          navbar.classList.toggle('active');
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('active');
         }
-      </script>
+  
+        document.querySelectorAll('.link-holder a').forEach(link => {
+        link.addEventListener('click', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.innerWidth <= 768 && navbar.classList.contains('active')) {
+                navbar.classList.remove('active');
+                }
+            });
+        });
+    
+    </script>
 </body>
 </html>
