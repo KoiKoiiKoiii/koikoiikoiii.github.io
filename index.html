@@ -33,15 +33,17 @@
             <source src="IMG/space.mp4" type="video/mp4">
         </video>
     </div>
-
-    <div id="header" class="navbar">
+    <div class="mobile-menu-button" onclick="toggleMobileMenu()">
+        &#9776; Menu
+      </div>
+      <div id="header" class="navbar mobile-hidden">
         <div class="link-holder">
-            <a id="homebutton" href="#home" onclick="onClick(this.id)" class="selected">Home</a>
-            <a id="aboutbutton" href="#about" onclick="onClick(this.id)" class="tobe">About Me</a>
-            <a id="socialbutton" href="#social" onclick="onClick(this.id)" class="tobe">Social Media</a>
-            <a id="schedulebutton" href="#schedule" onclick="onClick(this.id)" class="tobe">Schedule</a>
+          <a id="homebutton" href="#home" onclick="onClick(this.id)" class="selected">Home</a>
+          <a id="aboutbutton" href="#about" onclick="onClick(this.id)" class="tobe">About Me</a>
+          <a id="socialbutton" href="#social" onclick="onClick(this.id)" class="tobe">Social Media</a>
+          <a id="schedulebutton" href="#schedule" onclick="onClick(this.id)" class="tobe">Schedule</a>
         </div>
-    </div>
+      </div>
 
     <div class="wrapper">
         <span id="about">
@@ -178,5 +180,11 @@
 
 
     </script>
+    <script>
+        function toggleMobileMenu() {
+          const navbar = document.querySelector('.navbar');
+          navbar.classList.toggle('active');
+        }
+      </script>
 </body>
 </html>
