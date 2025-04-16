@@ -180,21 +180,24 @@
 
 
     </script>
-    <script>
-        function toggleMobileMenu() {
-            const navbar = document.querySelector('.navbar');
-            navbar.classList.toggle('active');
-        }
+<script>
+    const menuButton = document.querySelector('.mobile-menu-button');
+    const navbar = document.querySelector('.navbar');
+    const navLinks = document.querySelectorAll('.link-holder a');
   
-        document.querySelectorAll('.link-holder a').forEach(link => {
-        link.addEventListener('click', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.innerWidth <= 768 && navbar.classList.contains('active')) {
-                navbar.classList.remove('active');
-                }
-            });
-        });
-    
-    </script>
+    function toggleMobileMenu() {
+      navbar.classList.toggle('active');
+    }
+  
+    menuButton.addEventListener('click', toggleMobileMenu);
+  
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768 && navbar.classList.contains('active')) {
+          navbar.classList.remove('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
