@@ -35,7 +35,7 @@
             <source src="IMG/space.mp4" type="video/mp4">
         </video>
     </div>
-    <div class="mobile-menu-button" onclick="toggleMobileMenu()">
+    <div class="mobile-menu-button">
         &#9776; Menu
       </div>
       <div id="header" class="navbar mobile-hidden">
@@ -186,7 +186,7 @@
     const menuButton = document.querySelector('.mobile-menu-button');
     const navbar = document.querySelector('.navbar');
     const navLinks = document.querySelectorAll('.link-holder a');
-  
+
     function toggleMobileMenu() {
       navbar.classList.toggle('active');
     }

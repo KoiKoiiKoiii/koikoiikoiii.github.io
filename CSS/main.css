@@ -25,6 +25,8 @@
 
 .aboutme {
   width: min(calc(30vw + 150px), 200px, 150px);
+  max-width: 100%; /* Ensures the image doesn't grow too large */
+  height: auto; /* Maintain aspect ratio */
 }
 
 .twitch {
@@ -254,9 +256,10 @@
   .socialimg,
   .twitch {
     width: 100%;
-    max-width: 100%;
+    max-width: 200px;
     height: auto;
   }
+
 
   iframe.twitch {
     width: 100%;
@@ -277,6 +280,13 @@
     padding-left: 0;
     padding-right: 0;
     text-align: center;
+  }
+
+  .navbar.active {
+    display: flex;
+    flex-direction: column;
+    background-color: #111;
+    width: 100%;
   }
 
   .link-holder {
