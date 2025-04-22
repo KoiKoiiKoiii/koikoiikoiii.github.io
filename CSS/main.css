@@ -2,6 +2,36 @@
    Base Styles
 ================================== */
 
+a:link {
+  color: green;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgb(255, 254, 184);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(230, 251, 255);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: rgb(197, 241, 255);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a {
+  color: rgb(255, 254, 184);
+  background-color: transparent;
+  text-decoration: none;
+}
+
 .box {
   margin: 2rem auto;
   padding: 2rem;
