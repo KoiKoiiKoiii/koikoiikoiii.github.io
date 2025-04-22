@@ -3,31 +3,31 @@
 ================================== */
 
 a:link {
-  color: green;
+  color: rgb(0, 39, 49);
   background-color: transparent;
   text-decoration: none;
 }
 
 a:visited {
-  color: rgb(255, 254, 184);
+  color: rgb(0, 37, 34);
   background-color: transparent;
   text-decoration: none;
 }
 
 a:hover {
-  color: rgb(230, 251, 255);
+  color: rgb(0, 47, 56);
   background-color: transparent;
   text-decoration: underline;
 }
 
 a:active {
-  color: rgb(197, 241, 255);
+  color: rgb(0, 91, 119);
   background-color: transparent;
   text-decoration: underline;
 }
 
 a {
-  color: rgb(255, 254, 184);
+  color: rgb(0, 90, 112);
   background-color: transparent;
   text-decoration: none;
 }
