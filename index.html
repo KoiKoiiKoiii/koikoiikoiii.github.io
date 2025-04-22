@@ -40,8 +40,8 @@
             <a id="homebutton" href="#home" onclick="onClick(this.id)" class="selected">Home</a>
             <a id="aboutbutton" href="#about" onclick="onClick(this.id)" class="tobe">About Me</a>
             <a id="socialbutton" href="#social" onclick="onClick(this.id)" class="tobe">Social Media</a>
-            <a id="schedulebutton" href="#schedule" onclick="onClick(this.id)" class="tobe">Schedule</a>
             <a id="reviewsbutton" href="reviews.html" onclick="onClick(this.id)" class="tobe">Game Reviews</a>
+            <a id="contactbutton" href="#contact" onclick="onClick(this.id)" class="tobe">Contact</a>
         </div>
     </div>
 
@@ -109,7 +109,7 @@
 
 
             
-            <div id="schedule" class="box2">
+            <div id="contact" class="box2">
                 <section class="box game-review">
                     <h3><span class="game-title">Game Reviews</span></h3>
                     <p>I now do game reviews on my <strong><a href="reviews.html">reviews page</a></strong>!</p>
@@ -137,7 +137,7 @@
         const homeButton = document.getElementById("homebutton");
         const aboutButton = document.getElementById("aboutbutton");
         const socialButton = document.getElementById("socialbutton");
-        const scheduleButton = document.getElementById("schedulebutton");
+        const contactButton = document.getElementById("contactbutton");
 
         function clean(...ids) {
             ids.forEach(id => {
@@ -155,7 +155,7 @@
                 { id: "homebutton", scrollLimit: 0 },
                 { id: "aboutbutton", scrollLimit: 150 },
                 { id: "socialbutton", scrollLimit: 850 },
-                { id: "schedulebutton", scrollLimit: 1300 }  // Assuming schedule is the last section
+                { id: "contactbutton", scrollLimit: 1300 }  // Assuming contact is the last section
             ];
 
             sections.forEach((section, index) => {
