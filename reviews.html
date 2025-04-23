@@ -20,6 +20,78 @@
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="CSS/main.css">
   <link rel="stylesheet" href="CSS/core.css">
+  <style>
+    .chat-bubble {
+      position: absolute;
+      right: -220px;
+      top: 20px;
+      background-color: #eac5ff;
+      border-radius: 20px;
+      padding: 10px 15px;
+      max-width: 200px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      font-size: 0.9em;
+      line-height: 1.4;
+      transition: all 0.3s ease;
+      color: rgb(43, 0, 59);
+    }
+
+    .chat-bubble::before {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 15px;
+      border-width: 10px 10px 10px 0;
+      border-style: solid;
+      border-color: transparent #eac5ff transparent transparent;
+    }
+
+    .game-review {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto 80px;
+    }
+
+    .game-review:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 1200px) {
+      .chat-bubble {
+        position: relative;
+        right: auto;
+        top: auto;
+        margin: 20px auto;
+        max-width: calc(100% - 40px);
+        width: auto;
+        text-align: center;
+        left: 0;
+        transform: none;
+      }
+
+      .chat-bubble::before {
+        display: none;
+      }
+
+      .game-review {
+        padding: 0 20px;
+        margin: 0 auto 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .chat-bubble {
+        max-width: 100%;
+        margin: 20px 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -47,13 +119,18 @@
     <section class="box">
       <h2>Welcome to My Game Reviews</h2>
       <p>
-        Hey there! This is my little corner of the internet where I dive deep into the games that have captured my attention. Whether it's a story-driven indie gem, a chaotic multiplayer shooter, or a nostalgic classic from my backlog, you'll find my personal takes, honest ratings, and maybe even a few spicy opinions.
+        Hey there! This is my little corner of the internet where I dive deep into the games that have captured my
+        attention. Whether it's a story-driven indie gem, a chaotic multiplayer shooter, or a nostalgic classic from my
+        backlog, you'll find my personal takes, honest ratings, and maybe even a few spicy opinions.
       </p>
       <p>
-        I don't just score games. I talk about how they feel, what they get right (or horribly wrong), and what moments stuck with me long after the credits rolled. If you're looking for thoughtful reviews with a bit of personality, you're in the right place.
+        I don't just score games. I talk about how they feel, what they get right (or horribly wrong), and what moments
+        stuck with me long after the credits rolled. If you're looking for thoughtful reviews with a bit of personality,
+        you're in the right place.
       </p>
       <p>
-        Scroll down, find your next favorite game, and don't be shy - I love chatting about games, so feel free to reach out on social media too. Reviews update as I play more, so check back often!
+        Scroll down, find your next favorite game, and don't be shy - I love chatting about games, so feel free to reach
+        out on social media too. Reviews update as I play more, so check back often!
       </p>
     </section>
 
@@ -86,20 +163,57 @@
     </section>
     -->
 
-    <section class="box game-review">
+    <section class="box"
+      style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: 3px; background-color: rgb(43, 43, 43); color: white;">
+      <div>
+        <label for="genreFilter"><strong>Filter by Genre:</strong></label><br>
+        <select id="genreFilter" onchange="applyFilters()">
+          <option value="all">All</option>
+          <option value="RPG">RPG</option>
+          <option value="FPS">FPS</option>
+          <option value="Visual">Visual</option>
+          <option value="Turn-Based">Turn-Based</option>
+          <option value="Open">Open World</option>
+          <option value="Survival">Survival</option>
+          <!-- Add more genres as needed -->
+        </select>
+      </div>
+
+      <div>
+        <label for="modeFilter"><strong>Filter by Mode:</strong></label><br>
+        <select id="modeFilter" onchange="applyFilters()">
+          <option value="all">All</option>
+          <option value="Singleplayer">Singleplayer</option>
+          <option value="Multiplayer">Multiplayer</option>
+          <option value="CoOp">Co-Op</option>
+          <option value="MMORPG">MMORPG</option>
+
+        </select>
+      </div>
+    </section>
+
+
+
+    <!-- Final Fantasy XIV review -->
+    <section class="box game-review" data-genre="MMORPG Open Multiplayer" data-mode="Singleplayer CoOp Multiplayer">
+      <div class="chat-bubble">
+        <strong>Wife's Take:</strong> "This is where your opinion of the game goes. I'll have to have you write something small up here."
+      </div>
       <h3>Game Title: <span class="game-title">Final Fantasy XIV</span></h3>
-      <img src="./IMG/FFXIV.png" alt="Final Fantasy XIV cover" class="game-cover">
-    
+      <img src="./IMG/Game Review Covers/FFXIV.png" alt="Final Fantasy XIV cover" class="game-cover">
+
       <p><strong>Rating:</strong> 9/10</p>
-    
+
       <p><strong>Platform:</strong> PC, Steam, Xbox, PS5</p>
       <p><strong>Genre:</strong> Fantasy, MMORPG, Open World</p>
       <p><strong>Time Played:</strong> ~5,000 hours; Ongoing</p>
-    
-      <p><strong>Quick Summary:</strong>  
-        Final Fantasy XIV is a massive, open-world MMORPG that offers a deep and engaging experience. The story is complex and well-written, with a focus on character development and world-building. The gameplay is balanced and offers something for everyone, from casual players to hardcore enthusiasts.
+
+      <p><strong>Quick Summary:</strong>
+        Final Fantasy XIV is a massive, open-world MMORPG that offers a deep and engaging experience. The story is
+        complex and well-written, with a focus on character development and world-building. The gameplay is balanced and
+        offers something for everyone, from casual players to hardcore enthusiasts.
       </p>
-    
+
       <p><strong>What I Loved:</strong></p>
       <ul>
         <li>Deep and engaging story</li>
@@ -117,33 +231,41 @@
         <li>Character design can be hit or miss</li>
         <li>Some characters can't wear certain armor</li>
       </ul>
-    
-      <p><strong>Would I Recommend It?</strong>  
-        Yes, I would recommend it to anyone who enjoys deep progression systems and a rich story. The story is entirely optional, so you can focus on the gameplay if you prefer. This is a great 'First MMO' for those who want to try the genre.
+
+      <p><strong>Would I Recommend It?</strong>
+        Yes, I would recommend it to anyone who enjoys deep progression systems and a rich story. The story is entirely
+        optional, so you can focus on the gameplay if you prefer. This is a great 'First MMO' for those who want to try
+        the genre.
       </p>
     </section>
 
-
-    <section class="box game-review">
+    <!-- Elder Scrolls Online review -->
+    <section class="box game-review" data-genre="MMORPG Open Multiplayer" data-mode="Singleplayer CoOp Multiplayer">
+      <div class="chat-bubble">
+        <strong>Wife's Take:</strong> ""
+      </div>
       <h3>Game Title: <span class="game-title">The Elder Scrolls Online</span></h3>
-      <img src="./IMG/ESO.png" alt="Elder Scrolls Online cover" class="game-cover">
-    
+      <img src="./IMG/Game Review Covers/ESO.png" alt="Elder Scrolls Online cover" class="game-cover">
+
       <p><strong>Rating:</strong> 6/10</p>
-    
+
       <p><strong>Platform:</strong> PC, Steam, Xbox, PS5</p>
       <p><strong>Genre:</strong> Fantasy, MMORPG, Open World</p>
       <p><strong>Time Played:</strong> ~2,500 hours; Completed</p>
-    
-      <p><strong>Quick Summary:</strong>  
-        Elder Scrolls Online is a massive, open-world MMORPG that offers a deep and engaging experience. The story is complex and well-written, with a focus on character development and world-building. The gameplay is balanced and offers something for everyone, from casual players to hardcore enthusiasts.
+
+      <p><strong>Quick Summary:</strong>
+        Elder Scrolls Online is a massive, open-world MMORPG that offers a deep and engaging experience. The story is
+        complex and well-written, with a focus on character development and world-building. The gameplay is balanced and
+        offers something for everyone, from casual players to hardcore enthusiasts.
       </p>
-    
+
       <p><strong>What I Loved:</strong></p>
       <ul>
         <li>Entire story is voiced, and the voice acting is very good</li>
         <li>Rich lore and world-building from the Elder Scrolls universe</li>
         <li>Flexible class system allowing for diverse character builds</li>
-        <li>Beautiful and diverse landscapes across Tamriel, allowing you to visit places you couldn't in previous games</li>
+        <li>Beautiful and diverse landscapes across Tamriel, allowing you to visit places you couldn't in previous games
+        </li>
         <li>Extensive housing system with great customization options</li>
         <li>Regular content updates and expansions</li>
         <li>Active and helpful community</li>
@@ -156,16 +278,453 @@
         <li>The game can be very expensive to play, with many microtransactions</li>
         <li>Lack of real depth to the combat, and the combat can get very repetitive</li>
       </ul>
-    
-      <p><strong>Would I Recommend It?</strong>  
-        No, I would not recommend it to anyone. The changes that have been made to the game have ruined the experience for me. I'm not sure if I'll ever return to the game. Maybe if they made all the microtransactions earnable in the base game, I would consider it. 
+
+      <p><strong>Would I Recommend It?</strong>
+        No, I would not recommend it to anyone. The changes that have been made to the game have ruined the experience
+        for me. I'm not sure if I'll ever return to the game. Maybe if they made all the microtransactions earnable in
+        the base game, I would consider it.
       </p>
     </section>
+
+    <!-- Persona 5 Royal review -->
+    <section class="box game-review" data-genre="RPG Visual Turn-Based" data-mode="Singleplayer">
+      <div class="chat-bubble">
+        <strong>Wife's Take:</strong> ""
+      </div>
+      <h3>Game Title: <span class="game-title">Persona 5 Royal</span></h3>
+      <img src="./IMG/Game Review Covers/P5R.png" alt="Persona 5 Royal cover" class="game-cover">
+
+      <p><strong>Rating:</strong> 10/10</p>
+
+      <p><strong>Platform:</strong> Steam, Xbox, PS5</p>
+      <p><strong>Genre:</strong> RPG, Visual Novel, Turn-Based Combat</p>
+      <p><strong>Time Played:</strong> 142.6 hours; Completed</p>
+
+      <p><strong>Quick Summary:</strong>
+        Persona 5 Royal is a turn-based RPG with one of the greatest stories I've ever seen in a video game. The combat
+        takes some getting used to if you're not used to turn-based combat, but it's a lot of fun once you get the hang
+        of it.
+      </p>
+
+      <p><strong>What I Loved:</strong></p>
+      <ul>
+        <li>Amazing story</li>
+        <li>Great character development</li>
+        <li>Beautiful art style</li>
+        <li>Great soundtrack</li>
+        <li>Great combat</li>
+        <li>Great enemy variety</li>
+        <li>Great social link system</li>
+        <li>Good choice of achievements</li>
+      </ul>
+      <p><strong>What Could Be Better:</strong></p>
+      <ul>
+        <li>The combat can get very repetitive if you're not a fan of turn-based combat</li>
+      </ul>
+
+      <p><strong>Would I Recommend It?</strong>
+        Absolutely. This is a must-play for anyone who wants a story-driven RPG with a great story, characters, and
+        combat. I've played and watched others play this game multiple times, and I still love it.
+      </p>
+    </section>
+
+    <!-- Call of Duty: Black Ops 6 review -->
+    <section class="box game-review" data-genre="FPS Multiplayer" data-mode="Multiplayer Singleplayer">
+      <div class="chat-bubble">
+        <strong>Wife's Take:</strong> ""
+      </div>
+      <h3>Game Title: <span class="game-title">Call of Duty: Black Ops 6</span></h3>
+      <img src="./IMG/Game Review Covers//BlackOps6.png" alt="Call of Duty: Black Ops 6 cover" class="game-cover">
+
+      <p><strong>Rating:</strong> 5/10</p>
+
+      <p><strong>Platform:</strong> Steam, Xbox, PS5</p>
+      <p><strong>Genre:</strong> FPS, Multiplayer</p>
+      <p><strong>Time Played:</strong> ~500 hours; Completed</p>
+
+      <p><strong>Quick Summary:</strong>
+        Call of Duty: Black Ops 6 is a first-person shooter with a focus on multiplayer. The campaign is short and not
+        very good, but the multiplayer is fun and has a lot of depth.
+      </p>
+
+      <p><strong>What I Loved:</strong></p>
+      <ul>
+        <li>Great multiplayer</li>
+        <li>Great soundtrack</li>
+        <li>Great graphics</li>
+      </ul>
+      <p><strong>What Could Be Better:</strong></p>
+      <ul>
+        <li>The developer care is lacking, and the game has a lot of bugs</li>
+        <li>The campaign is short and not very good</li>
+        <li>The game is very expensive to play</li>
+        <li>The game is very grindy</li>
+        <li>The game is very repetitive</li>
+        <li>The game is very unbalanced</li>
+      </ul>
+
+      <p><strong>Would I Recommend It?</strong>
+        If you're a fan of the Call of Duty series, I would recommend it. Otherwise, I would not recommend it. This one
+        is the same as every other Call of Duty game but slightly more fast-paced than previous titles.
+      </p>
+    </section>
+
+    <!-- Skyrim Special Edition review -->
+    <section class="box game-review" data-genre="RPG Open" data-mode="Singleplayer">
+      <h3>Game Title: <span class="game-title">Skyrim Special Edition</span></h3>
+      <img src="./IMG/Game Review Covers/Skyrim.png" alt="Skyrim Special Edition cover" class="game-cover">
+
+      <p><strong>Rating:</strong> 7/10</p>
+
+      <p><strong>Platform:</strong> Steam, Xbox, PS5</p>
+      <p><strong>Genre:</strong> RPG, Open World</p>
+      <p><strong>Time Played:</strong> 549.6 hours; Completed</p>
+
+      <p><strong>Quick Summary:</strong>
+        Skyrim is a first-person RPG with a focus on exploration and combat. The campaign is long and has a lot of
+        depth,
+        but the combat can get very repetitive.
+      </p>
+
+      <p><strong>What I Loved:</strong></p>
+      <ul>
+        <li>Great story</li>
+        <li>Great character development</li>
+        <li>Beautiful art style</li>
+        <li>Great soundtrack</li>
+        <li>Great combat</li>
+        <li>Great enemy variety</li>
+        <li>Great crafting system</li>
+        <li>Great modding community</li>
+      </ul>
+      <p><strong>What Could Be Better:</strong></p>
+      <ul>
+        <li>The combat can get very repetitive</li>
+        <li>The game can be very unbalanced</li>
+        <li>The puzzles are not very good</li>
+        <li>Lack of an engaging main story</li>
+        <li>More variety in the world would be nice</li>
+        <li>4 different copies of the same game</li>
+      </ul>
+
+      <p><strong>Would I Recommend It?</strong>
+        Skyrim is a great game, and a great first RPG. I would recommend it to anyone who wants a story-driven RPG with
+        a
+        great open world and lots of content to do. I would recommend playing the Special Edition, as it is the best
+        version of the game.
+      </p>
+    </section>
+
+    <!-- Mad Father review -->
+    <section class="box game-review" data-genre="Visual Horror" data-mode="Singleplayer">
+      <h3>Game Title: <span class="game-title">Mad Father</span></h3>
+      <img src="./IMG/Game Review Covers/MF.png" alt="Mad Father cover" class="game-cover">
+
+      <p><strong>Rating:</strong> 8/10</p>
+
+      <p><strong>Platform:</strong> Steam</p>
+      <p><strong>Genre:</strong> Visual Novel, Horror</p>
+      <p><strong>Time Played:</strong> 10 hours; Completed</p>
+
+      <p><strong>Quick Summary:</strong>
+        In this horror adventure game, play as 11-year-old girl Aya Drevis and uncover the secrets of a bizarre incident
+        that befalls the Drevis residence, where maniacal experiments are conducted night after night.
+      </p>
+
+      <p><strong>What I Loved:</strong></p>
+      <ul>
+        <li>Great story</li>
+        <li>Great art style</li>
+        <li>Great soundtrack</li>
+        <li>Great character development</li>
+        <li>Simple but sweet</li>
+        <li>Great atmosphere</li>
+        <li>Genuinely creepy</li>
+      </ul>
+      <p><strong>What Could Be Better:</strong></p>
+      <ul>
+        <li>The game is very short if you're just trying to get the one ending</li>
+        <li>The game is very linear</li>
+        <li>The game is very easy to get stuck on</li>
+      </ul>
+
+      <p><strong>Would I Recommend It?</strong>
+        Absolutely. I can't think of another horror game that has made me feel as uncomfortable as this one in a 2D
+        landscape. They have a great remake on Steam, so I would recommend playing that instead of the original.
+      </p>
+    </section>
+
+    <!-- Halo: The Master Chief Collection review -->
+    <section class="box game-review" data-genre="FPS Multiplayer" data-mode="Singleplayer CoOp Multiplayer">
+      <h3>Game Title: <span class="game-title">Halo: The Master Chief Collection</span></h3>
+      <img src="./IMG/Game Review Covers/Halo.png" alt="Halo: The Master Chief Collection cover" class="game-cover">
+
+      <p><strong>Rating:</strong> 10/10</p>
+
+      <p><strong>Platform:</strong> Steam</p>
+      <p><strong>Genre:</strong> FPS, Multiplayer</p>
+      <p><strong>Time Played:</strong> 10 hours; Completed</p>
+
+      <p><strong>Quick Summary:</strong>
+        Halo: The Master Chief Collection is a collection of all the best Halo games, with a focus on multiplayer. The
+        campaign is amazing, and the multiplayer is fun and has a lot of depth. Definitely worth the price.
+      </p>
+
+      <p><strong>What I Loved:</strong></p>
+      <ul>
+        <li>The quality of the remaster is amazing</li>
+        <li>The campaign is amazing</li>
+        <li>The multiplayer is fun and has a lot of depth</li>
+        <li>The graphics are amazing</li>
+        <li>The soundtrack is amazing</li>
+      </ul>
+      <p><strong>What Could Be Better:</strong></p>
+      <ul>
+        <li>The fact they're not making any more Halo games, and if they are they're not this good</li>
+      </ul>
+
+      <p><strong>Would I Recommend It?</strong>
+        Of course. Even if you're not a fan of the Halo series yet, you should still play this game. It's a great way to
+        experience the series and a great way to sink your teeth into a great storyline.
+      </p>
+    </section>
+
+    <!-- Overwatch 2 review -->
+    <section class="box game-review" data-genre="FPS Multiplayer" data-mode="Multiplayer">
+      <h3>Game Title: <span class="game-title">Overwatch 2</span></h3>
+      <img src="./IMG/Game Review Covers/Overwatch.png" alt="Overwatch 2 cover" class="game-cover">
+
+      <p><strong>Rating:</strong> 4/10</p>
+
+      <p><strong>Platform:</strong> Steam</p>
+      <p><strong>Genre:</strong> FPS, Multiplayer</p>
+      <p><strong>Time Played:</strong> ~700 hours; Ongoing</p>
+
+      <p><strong>Quick Summary:</strong>
+        Overwatch 2 is a first-person shooter with a focus on multiplayer. There is no campaign. The multiplayer is the
+        only source of content, and it can run stale very quickly.
+      </p>
+
+      <p><strong>What I Loved:</strong></p>
+      <ul>
+        <li>The graphics are stylized and fit the world of Overwatch</li>
+        <li>The gameplay is fun and has a lot of depth</li>
+        <li>The characters are great</li>
+        <li>The maps are fun and have a lot of variety</li>
+        <li>The game is very addictive once you're into it</li>
+        <li>Good progression system</li>
+        <li>Better with friends</li>
+      </ul>
+
+      <p><strong>What Could Be Better:</strong></p>
+      <ul>
+        <li>The developers are very bad at balancing the game</li>
+        <li>The game can run stale very quickly</li>
+        <li>The game is very grindy</li>
+        <li>Too many microtransactions</li>
+        <li>Hard to navigate the hero pool if you're not used to it</li>
+      </ul>
+
+      <p><strong>Would I Recommend It?</strong>
+        As many problems as Overwatch 2 has, I would still recommend it. It's a great game if you ignore the criticisms
+        and just enjoy the team-based gameplay. I couldn't think of another game that can do it exactly the way that
+        Overwatch 2 has. Team Fortress 2 is similar, but not quite the same.
+      </p>
+
+    </section>
+
+    <!-- Stardew Valley review -->
+    <section class="box game-review" data-genre="Simulation" data-mode="Singleplayer CoOp Multiplayer">
+      <h3>Game Title: <span class="game-title">Stardew Valley</span></h3>
+      <img src="./IMG/Game Review Covers/Stardew.png" alt="Stardew Valley cover" class="game-cover">
+
+      <p><strong>Rating:</strong> 10/10</p>
+
+      <p><strong>Platform:</strong> Steam</p>
+      <p><strong>Genre:</strong> Simulation, RPG, Open World</p>
+      <p><strong>Time Played:</strong> 10 hours; Completed</p>
+
+      <p><strong>Quick Summary:</strong>
+        Stardew Valley is a simulation game where you play as a character who inherits a farm from your grandfather. You
+        can grow crops, raise animals, and build relationships with the townsfolk.
+      </p>
+
+      <p><strong>What I Loved:</strong></p>
+      <ul>
+        <li>Incredibly addictive</li>
+        <li>Extremely relaxing</li>
+        <li>Lots of customizable content</li>
+        <li>No two playthroughs are the same</li>
+        <li>The story is very good</li>
+        <li>There's always something to do</li>
+      </ul>
+      <p><strong>What Could Be Better:</strong></p>
+      <ul>
+        <li>The combat can be very difficult</li>
+      </ul>
+
+      <p><strong>Would I Recommend It?</strong>
+        Absolutely. Stardew Valley is a great game that is very addictive and fun. It's a great way to relax and enjoy
+        the simple pleasures in life.
+      </p>
+    </section>
+
+    <!-- Terraria review -->
+    <section class="box game-review" data-genre="Survival Open Multiplayer" data-mode="Singleplayer CoOp Multiplayer">
+      <h3>Game Title: <span class="game-title">Terraria</span></h3>
+      <img src="./IMG/Game Review Covers/Terraria.png" alt="Terraria cover" class="game-cover">
+
+      <p><strong>Rating:</strong> 8/10</p>
+
+      <p><strong>Platform:</strong> Steam</p>
+      <p><strong>Genre:</strong> Simulation, RPG, Open World</p>
+      <p><strong>Time Played:</strong> ~200 hours; Completed</p>
+
+      <p><strong>Quick Summary:</strong>
+        Terraria is a sandbox game where you can build your own world. You can explore the world, fight enemies, and
+        collect resources.
+      </p>
+
+      <p><strong>What I Loved:</strong></p>
+      <ul>
+        <li>Incredibly addictive</li>
+        <li>No two playthroughs are the same</li>
+        <li>There's always something to do</li>
+        <li>The crafting system is very deep</li>
+        <li>The world is very large and has a lot of variety</li>
+        <li>The combat is very fun</li>
+
+      </ul>
+      <p><strong>What Could Be Better:</strong></p>
+      <ul>
+        <li>The combat can be very difficult for newcomers</li>
+        <li>A lot of the content is very repetitive</li>
+      </ul>
+
+      <p><strong>Would I Recommend It?</strong>
+        Terraria is a wonderful game unlike any others, and for that reason alone I would recommend it. It's a great
+        game to play with friends, and it's a great game to play alone.
+      </p>
+    </section>
+
+    <!-- Assassin's Creed review -->
+    <section class="box game-review" data-genre="RPG Open" data-mode="Singleplayer">
+      <h3>Game Title: <span class="game-title">Assassin's Creed 1</span></h3>
+      <img src="./IMG/Game Review Covers/AC1.png" alt="Assassin's Creed 1 cover" class="game-cover">
+
+      <p><strong>Rating:</strong> 4/10</p>
+
+      <p><strong>Platform:</strong> Steam, Xbox, PS5</p>
+      <p><strong>Genre:</strong> RPG, Open World</p>
+      <p><strong>Time Played:</strong> ~10 hours; Completed</p>
+
+      <p><strong>Quick Summary:</strong>
+        Assassin's Creed 1 is a great game that is a great way to experience the world of the Assassin's Creed series.
+      </p>
+
+      <p><strong>What I Loved:</strong></p>
+      <ul>
+        <li>The story is very good</li>
+        <li>The world is very large and has a lot of variety</li>
+        <li>The time period that the game takes place in is very unlike other games</li>
+      </ul>
+      <p><strong>What Could Be Better:</strong></p>
+      <ul>
+        <li>The combat is very dated</li>
+        <li>The game is very linear</li>
+        <li>The game is very short</li>
+        <li>The achievements can be very grindy</li>
+        <li>Since the game is dated, it's not as good as other games in the series</li>
+      </ul>
+
+      <p><strong>Would I Recommend It?</strong>
+        If you're a fan of the Assassin's Creed series then it's worth a playthrough. Otherwise, it's not a bad game,
+        but it's not a good game either. I wouldn't recommend it to anyone who's new to the franchise.
+      </p>
+    </section>
+
+    <!-- Fallout 4 review -->
+    <section class="box game-review" data-genre="RPG Open Survival" data-mode="Singleplayer">
+      <h3>Game Title: <span class="game-title">Fallout 4</span></h3>
+      <img src="./IMG/Game Review Covers/Fallout4.png" alt="Fallout 4 cover" class="game-cover">
+
+      <p><strong>Rating:</strong> 7/10</p>
+
+      <p><strong>Platform:</strong> Steam, Xbox, PS5</p>
+      <p><strong>Genre:</strong> RPG, Open World, Survival</p>
+      <p><strong>Time Played:</strong> ~10 hours; Completed</p>
+
+      <p><strong>Quick Summary:</strong>
+        Fallout 4 is a great game that falls short of it's predecessors.
+      </p>
+
+      <p><strong>What I Loved:</strong></p>
+      <ul>
+        <li>The story is very good</li>
+        <li>The world is very large and has a lot of variety</li>
+        <li>The crafting system is very deep</li>
+        <li>The combat is very fun</li>
+        <li>Random encounters can spice up the gameplay in exciting ways</li>
+        <li>Once you're hooked, you're REALLY hooked</li>
+      </ul>
+      <p><strong>What Could Be Better:</strong></p>
+      <ul>
+        <li>The game lacks depth without mods</li>
+        <li>The game lacks depth without DLCs</li>
+        <li>There is a weird emptiness to the world if you don't have the radio on</li>
+        <li>Like other Bethesda games, the combat can get very repetitive</li>
+
+      </ul>
+
+      <p><strong>Would I Recommend It?</strong>
+        If you're a first-time Fallout player, I would recommend starting with Fallout 3. If you're a returning player,
+        then it's worth a playthrough. Good progression and a decent story.
+      </p>
+    </section>
+
+    <!-- Tinkertown review -->
+    <section class="box game-review" data-genre="RPG Open Survival" data-mode="Singleplayer CoOp Multiplayer">
+      <h3>Game Title: <span class="game-title">Tinkertown</span></h3>
+      <img src="./IMG/Game Review Covers/Tinkertown.png" alt="Tinkertown cover" class="game-cover">
+
+      <p><strong>Rating:</strong> 5/10</p>
+
+      <p><strong>Platform:</strong> Steam, Xbox, PS5</p>
+      <p><strong>Genre:</strong> Open World, Survival</p>
+      <p><strong>Time Played:</strong> ~22 hours; Ongoing</p>
+
+      <p><strong>Quick Summary:</strong>
+        Tinkertown is your traditional open world survival game. You can build your own 2D world and explore it with
+        your friends.
+      </p>
+
+      <p><strong>What I Loved:</strong></p>
+      <ul>
+        <li>The art style is very unique and fun</li>
+        <li>There's always an adventure around the corner</li>
+      </ul>
+      <p><strong>What Could Be Better:</strong></p>
+      <ul>
+        <li>The game lacks a good crafting system</li>
+        <li>Other 2D games can do what this game does better</li>
+        <li>The game is very repetitive</li>
+        <li>At the time I played it, the game was very buggy</li>
+        <li>Lack of variety behind the combat</li>
+
+      </ul>
+
+      <p><strong>Would I Recommend It?</strong>
+        Yes and no. If the game has fixed it's bugs, it's worth a play. There's a lot to do, and a good mix-up if you've
+        been playing a lot of the other mainstream survival co-op games. I really enjoyed playing this.
+      </p>
+    </section>
+
+
   </main>
 
 
-  <!-- Persona 5 review, Call of Duty review, Skyrim review, Mad Father review. Halo review, Overwatch 2 review, Stardew Valley review, Terraria review, Assassin's Creed review, Fallout 4, Persona 4 Golden, Persona 3 Reload, Corekeeper, Tinkertown,  -->
-<!--
+  <!-- Tinkertown, Persona 4 Golden, Persona 3 Reload, Corekeeper,   -->
+  <!--
   <section class="box game-review">
     <h3>Game Title: <span class="game-title">Persona 5</span></h3>
     <img src="./IMG/P5.png" alt="Persona 5 cover" class="game-cover">
@@ -174,10 +733,28 @@
     -->
 
   <footer class="box">
-    <p>More reviews coming soon :)</p>
+    <p>More reviews coming soon!</p>
   </footer>
 
   <script src="js/navigation.js"></script>
+  <script>
+    function applyFilters() {
+      const genre = document.getElementById("genreFilter").value;
+      const mode = document.getElementById("modeFilter").value;
+
+      const reviews = document.querySelectorAll('.game-review');
+
+      reviews.forEach(review => {
+        const genres = review.getAttribute('data-genre').split(" ");
+        const modes = review.getAttribute('data-mode').split(" ");
+
+        const genreMatch = (genre === "all" || genres.includes(genre));
+        const modeMatch = (mode === "all" || modes.includes(mode));
+
+        review.style.display = (genreMatch && modeMatch) ? 'block' : 'none';
+      });
+    }
+  </script>
 </body>
 
 </html>

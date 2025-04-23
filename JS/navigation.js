@@ -49,23 +49,6 @@ window.addEventListener("scroll", scrollFunction);
 
 
 
-const youtubeKey = 'AIzaSyD92hfNbiwM4kZpg4VwUfnTJDMSEisXdgo';
-const youtubeUser = 'UCfr1jxvgDly8Sqc9ilVuSrg';
-const subCount = document.getElementById('subCount');
-const delay = 100000; // 10 min
-
-async function getSubscribers() {
-    try {
-        const response = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${youtubeUser}&key=${youtubeKey}`);
-        const data = await response.json();
-        subCount.innerHTML = `${data.items[0].statistics.subscriberCount} Subscribers`;
-    } catch (error) {
-        console.error('Failed to fetch subscriber count', error);
-    }
-}
-
-getSubscribers();
-setInterval(getSubscribers, delay);
 
 
 

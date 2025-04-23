@@ -32,6 +32,37 @@ a {
   text-decoration: none;
 }
 
+.filter-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-buttons button {
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.filter-buttons button:hover {
+  background-color: #666;
+}
+
+#genreFilter, #modeFilter {
+  padding: 0.5em;
+  font-size: 1rem;
+  margin-top: 0.5em;
+}
+
+.box label, .box select {
+  margin-right: 1rem;
+}
 .box {
   margin: 2rem auto;
   padding: 2rem;
