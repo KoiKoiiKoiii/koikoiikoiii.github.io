@@ -54,7 +54,7 @@ a {
   background-color: #666;
 }
 
-#genreFilter, #modeFilter {
+#genreFilter, #modeFilter, #sortBy {
   padding: 0.5em;
   font-size: 1rem;
   margin-top: 0.5em;

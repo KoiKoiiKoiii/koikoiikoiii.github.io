@@ -143,7 +143,7 @@
     
       <p><strong>Platform:</strong> [e.g. PC, Steam, PS5, Xbox]</p>
       <p><strong>Genre:</strong> [e.g. Action, RPG, Puzzle, Metroidvania]</p>
-      <p><strong>Time Played:</strong> [e.g. ~25 hours, Completed, Ongoing]</p>
+      <p><strong>Time Played:</strong> [e.g. 25 hours, Completed, Ongoing]</p>
     
       <p><strong>Quick Summary:</strong>  
         [One-liner or short paragraph giving your overall thoughts — think of this like a tweet-length summary.]
@@ -164,10 +164,10 @@
     -->
 
     <section class="box"
-      style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: 3px; background-color: rgb(43, 43, 43); color: white;">
-      <div>
+      style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-start; margin-bottom: 3px; background-color: rgb(43, 43, 43); color: white;">
+      <div style="flex: 1; min-width: 200px;">
         <label for="genreFilter"><strong>Filter by Genre:</strong></label><br>
-        <select id="genreFilter" onchange="applyFilters()">
+        <select id="genreFilter" onchange="applyFilters()" style="width: 100%; max-width: 200px;">
           <option value="all">All</option>
           <option value="RPG">RPG</option>
           <option value="FPS">FPS</option>
@@ -178,30 +178,129 @@
           <option value="Story">Story</option>
           <option value="Horror">Horror</option>
           <option value="Adventure">Adventure</option>
-          
-          <!-- Add more genres as needed -->
         </select>
       </div>
 
-      <div>
+      <div style="flex: 1; min-width: 200px;">
         <label for="modeFilter"><strong>Filter by Mode:</strong></label><br>
-        <select id="modeFilter" onchange="applyFilters()">
+        <select id="modeFilter" onchange="applyFilters()" style="width: 100%; max-width: 200px;">
           <option value="all">All</option>
           <option value="Singleplayer">Singleplayer</option>
           <option value="Multiplayer">Multiplayer</option>
           <option value="CoOp">Co-Op</option>
           <option value="MMORPG">MMORPG</option>
-
         </select>
+      </div>
+
+      <div style="flex: 1; min-width: 200px;">
+        <label for="sortBy"><strong>Sort By:</strong></label><br>
+        <select id="sortBy" onchange="applyFilters()" style="width: 100%; max-width: 200px;">
+          <option value="none">No Sort</option>
+          <option value="ratingHigh">Rating (Highest First)</option>
+          <option value="ratingLow">Rating (Lowest First)</option>
+          <option value="timePlayed">Time Played</option>
+          <option value="releaseDate">Release Date</option>
+        </select>
+      </div>
+
+      <div style="width: 100%; text-align: center; margin-top: 15px;">
+        <p id="reviewCount" style="margin: 0; color:rgb(167, 167, 167)">
+          Showing all reviews (14 total)
+        </p>
       </div>
     </section>
 
 
+    <!-- TPoG review -->
+    <section id="TPoG" class="box game-review" data-genre="Story Adventure" data-mode="Singleplayer"
+      data-release-date="2024-04-23">
+      <h3>Game Title: <span class="game-title"><a href="https://danieloschepkov.itch.io/the-photo-of-god"
+            style="color:white;">The Photo of God</a></span></h3>
+      <img src="./IMG/Game Review Covers/TPoG.png" alt="TPoG cover" class="game-cover">
+
+      <p><strong>Rating:</strong> 6/10</p>
+
+      <p><strong>Platform:</strong> PC</p>
+      <p><strong>Genre:</strong> Story-Driven, Adventure </p>
+      <p><strong>Time Played:</strong> 10 minutes; Completed</p>
+
+      <p><strong>Quick Summary:</strong>
+        A short narrative-driven atmospheric horror game, where you play as an old photographer, who decided to take the
+        photo of God one day.
+        Take your camera and you are ready to go. Birds will lead you.
+      </p>
+
+      <p><strong>What I Loved:</strong></p>
+      <ul>
+        <li>Deep Storytelling</li>
+        <li>Good, solid slow progression</li>
+        <li>Engaging tutorial sequence</li>
+        <li>Practically a puzzle within the first few minutes</li>
+        <li>Cute birds</li>
+        <li>Unique art style</li>
+        <li>Good SFX selection</li>
+      </ul>
+      <p><strong>What Could Be Better:</strong></p>
+      <ul>
+        <li>Character feels small/short</li>
+        <li>Disproportionate to the scenery at times</li>
+        <li>Some SFXs are too loud while others are too quiet</li>
+        <li>Niche, some people may not find it entertaining</li>
+
+      </ul>
+
+      <p><strong>Would I Recommend It?</strong>
+        If you're interested in this kind of genre already, yes. If you're not, I wouldn't recommend it. It can be a bit
+        slow and the story is a bit short. However, the developer behind it clearly has a lot of potential and talent.
+        I'm looking forward to seeing what they produce next.
+      </p>
+    </section>
+
+    <!-- Tinkertown review -->
+    <section class="box game-review" data-genre="Open Survival" data-mode="Singleplayer CoOp Multiplayer"
+      data-release-date="2021-12-03">
+      <h3>Game Title: <span class="game-title"><a href="https://store.steampowered.com/app/1276660/Tinkertown/"
+            style="color:white;">Tinkertown</a></span></h3>
+      <img src="./IMG/Game Review Covers/Tinkertown.png" alt="Tinkertown cover" class="game-cover">
+
+      <p><strong>Rating:</strong> 5/10</p>
+
+      <p><strong>Platform:</strong> Steam, Xbox, PS5</p>
+      <p><strong>Genre:</strong> Open World, Survival</p>
+      <p><strong>Time Played:</strong> 22 hours; Ongoing</p>
+
+      <p><strong>Quick Summary:</strong>
+        Tinkertown is your traditional open world survival game. You can build your own 2D world and explore it with
+        your friends.
+      </p>
+
+      <p><strong>What I Loved:</strong></p>
+      <ul>
+        <li>The art style is very unique and fun</li>
+        <li>There's always an adventure around the corner</li>
+      </ul>
+      <p><strong>What Could Be Better:</strong></p>
+      <ul>
+        <li>The game lacks a good crafting system</li>
+        <li>Other 2D games can do what this game does better</li>
+        <li>The game is very repetitive</li>
+        <li>At the time I played it, the game was very buggy</li>
+        <li>Lack of variety behind the combat</li>
+
+      </ul>
+
+      <p><strong>Would I Recommend It?</strong>
+        Yes and no. If the game has fixed it's bugs, it's worth a play. There's a lot to do, and a good mix-up if you've
+        been playing a lot of the other mainstream survival co-op games. I really enjoyed playing this.
+      </p>
+    </section>
 
     <!-- Final Fantasy XIV review -->
-    <section class="box game-review" data-genre="MMORPG Open Multiplayer" data-mode="Singleplayer CoOp Multiplayer">
+    <section class="box game-review" data-genre="MMORPG Open Multiplayer" data-mode="Singleplayer CoOp Multiplayer MMORPG" 
+      data-release-date="2010-09-30">
       <div class="chat-bubble">
-        <strong>Wife's Take:</strong> "This is where your opinion of the game goes. I'll have to have you write something small up here."
+        <strong>Wife's Take:</strong> "This is where your opinion of the game goes. I'll have to have you write
+        something small up here."
       </div>
       <h3>Game Title: <span class="game-title">Final Fantasy XIV</span></h3>
       <img src="./IMG/Game Review Covers/FFXIV.png" alt="Final Fantasy XIV cover" class="game-cover">
@@ -210,7 +309,7 @@
 
       <p><strong>Platform:</strong> PC, Steam, Xbox, PS5</p>
       <p><strong>Genre:</strong> Fantasy, MMORPG, Open World</p>
-      <p><strong>Time Played:</strong> ~5,000 hours; Ongoing</p>
+      <p><strong>Time Played:</strong> 5,000 hours; Ongoing</p>
 
       <p><strong>Quick Summary:</strong>
         Final Fantasy XIV is a massive, open-world MMORPG that offers a deep and engaging experience. The story is
@@ -244,7 +343,8 @@
     </section>
 
     <!-- Elder Scrolls Online review -->
-    <section class="box game-review" data-genre="MMORPG Open Multiplayer" data-mode="Singleplayer CoOp Multiplayer">
+    <section class="box game-review" data-genre="MMORPG Open Multiplayer" data-mode="Singleplayer CoOp Multiplayer MMORPG"
+      data-release-date="2014-04-04">
       <div class="chat-bubble">
         <strong>Wife's Take:</strong> ""
       </div>
@@ -255,7 +355,7 @@
 
       <p><strong>Platform:</strong> PC, Steam, Xbox, PS5</p>
       <p><strong>Genre:</strong> Fantasy, MMORPG, Open World</p>
-      <p><strong>Time Played:</strong> ~2,500 hours; Completed</p>
+      <p><strong>Time Played:</strong> 2,500 hours; Completed</p>
 
       <p><strong>Quick Summary:</strong>
         Elder Scrolls Online is a massive, open-world MMORPG that offers a deep and engaging experience. The story is
@@ -291,7 +391,8 @@
     </section>
 
     <!-- Persona 5 Royal review -->
-    <section class="box game-review" data-genre="RPG Visual Turn-Based" data-mode="Singleplayer">
+    <section class="box game-review" data-genre="RPG Visual Turn-Based" data-mode="Singleplayer"
+      data-release-date="2016-5-16">
       <div class="chat-bubble">
         <strong>Wife's Take:</strong> ""
       </div>
@@ -333,7 +434,8 @@
     </section>
 
     <!-- Call of Duty: Black Ops 6 review -->
-    <section class="box game-review" data-genre="FPS Multiplayer" data-mode="Multiplayer Singleplayer">
+    <section class="box game-review" data-genre="FPS Multiplayer" data-mode="Multiplayer Singleplayer"
+      data-release-date="2025-11-15">
       <div class="chat-bubble">
         <strong>Wife's Take:</strong> ""
       </div>
@@ -344,7 +446,7 @@
 
       <p><strong>Platform:</strong> Steam, Xbox, PS5</p>
       <p><strong>Genre:</strong> FPS, Multiplayer</p>
-      <p><strong>Time Played:</strong> ~500 hours; Completed</p>
+      <p><strong>Time Played:</strong> 500 hours; Completed</p>
 
       <p><strong>Quick Summary:</strong>
         Call of Duty: Black Ops 6 is a first-person shooter with a focus on multiplayer. The campaign is short and not
@@ -374,7 +476,7 @@
     </section>
 
     <!-- Skyrim Special Edition review -->
-    <section class="box game-review" data-genre="RPG Open" data-mode="Singleplayer">
+    <section class="box game-review" data-genre="RPG Open" data-mode="Singleplayer" data-release-date="2016-10-28">
       <h3>Game Title: <span class="game-title">Skyrim Special Edition</span></h3>
       <img src="./IMG/Game Review Covers/Skyrim.png" alt="Skyrim Special Edition cover" class="game-cover">
 
@@ -420,7 +522,7 @@
     </section>
 
     <!-- Mad Father review -->
-    <section class="box game-review" data-genre="Visual Horror" data-mode="Singleplayer">
+    <section class="box game-review" data-genre="Visual Horror" data-mode="Singleplayer" data-release-date="2012-12-14">
       <h3>Game Title: <span class="game-title">Mad Father</span></h3>
       <img src="./IMG/Game Review Covers/MF.png" alt="Mad Father cover" class="game-cover">
 
@@ -459,7 +561,8 @@
     </section>
 
     <!-- Halo: The Master Chief Collection review -->
-    <section class="box game-review" data-genre="FPS Multiplayer" data-mode="Singleplayer CoOp Multiplayer">
+    <section class="box game-review" data-genre="FPS Multiplayer" data-mode="Singleplayer CoOp Multiplayer"
+      data-release-date="2014-11-11">
       <h3>Game Title: <span class="game-title">Halo: The Master Chief Collection</span></h3>
       <img src="./IMG/Game Review Covers/Halo.png" alt="Halo: The Master Chief Collection cover" class="game-cover">
 
@@ -494,7 +597,8 @@
     </section>
 
     <!-- Overwatch 2 review -->
-    <section class="box game-review" data-genre="FPS Multiplayer" data-mode="Multiplayer">
+    <section class="box game-review" data-genre="FPS Multiplayer" data-mode="Multiplayer"
+      data-release-date="2022-10-04">
       <h3>Game Title: <span class="game-title">Overwatch 2</span></h3>
       <img src="./IMG/Game Review Covers/Overwatch.png" alt="Overwatch 2 cover" class="game-cover">
 
@@ -502,7 +606,7 @@
 
       <p><strong>Platform:</strong> Steam</p>
       <p><strong>Genre:</strong> FPS, Multiplayer</p>
-      <p><strong>Time Played:</strong> ~700 hours; Ongoing</p>
+      <p><strong>Time Played:</strong> 700 hours; Ongoing</p>
 
       <p><strong>Quick Summary:</strong>
         Overwatch 2 is a first-person shooter with a focus on multiplayer. There is no campaign. The multiplayer is the
@@ -538,14 +642,15 @@
     </section>
 
     <!-- Stardew Valley review -->
-    <section class="box game-review" data-genre="Simulation" data-mode="Singleplayer CoOp Multiplayer">
+    <section class="box game-review" data-genre="Sandbox Open Simulation" data-mode="Singleplayer CoOp Multiplayer"
+      data-release-date="2016-02-26">
       <h3>Game Title: <span class="game-title">Stardew Valley</span></h3>
       <img src="./IMG/Game Review Covers/Stardew.png" alt="Stardew Valley cover" class="game-cover">
 
       <p><strong>Rating:</strong> 10/10</p>
 
       <p><strong>Platform:</strong> Steam</p>
-      <p><strong>Genre:</strong> Simulation, RPG, Open World</p>
+      <p><strong>Genre:</strong> Simulation, Sandbox, Open World</p>
       <p><strong>Time Played:</strong> 10 hours; Completed</p>
 
       <p><strong>Quick Summary:</strong>
@@ -574,15 +679,16 @@
     </section>
 
     <!-- Terraria review -->
-    <section class="box game-review" data-genre="Survival Open Multiplayer" data-mode="Singleplayer CoOp Multiplayer">
+    <section class="box game-review" data-genre="Survival Open Multiplayer" data-mode="Singleplayer CoOp Multiplayer"
+      data-release-date="2011-05-16">
       <h3>Game Title: <span class="game-title">Terraria</span></h3>
       <img src="./IMG/Game Review Covers/Terraria.png" alt="Terraria cover" class="game-cover">
 
       <p><strong>Rating:</strong> 8/10</p>
 
       <p><strong>Platform:</strong> Steam</p>
-      <p><strong>Genre:</strong> Simulation, RPG, Open World</p>
-      <p><strong>Time Played:</strong> ~200 hours; Completed</p>
+      <p><strong>Genre:</strong> Sandbox, Open World</p>
+      <p><strong>Time Played:</strong> 200 hours; Completed</p>
 
       <p><strong>Quick Summary:</strong>
         Terraria is a sandbox game where you can build your own world. You can explore the world, fight enemies, and
@@ -612,15 +718,15 @@
     </section>
 
     <!-- Assassin's Creed review -->
-    <section class="box game-review" data-genre="RPG Open" data-mode="Singleplayer">
+    <section class="box game-review" data-genre="Adventure Open" data-mode="Singleplayer" data-release-date="2007-11-13">
       <h3>Game Title: <span class="game-title">Assassin's Creed 1</span></h3>
       <img src="./IMG/Game Review Covers/AC1.png" alt="Assassin's Creed 1 cover" class="game-cover">
 
       <p><strong>Rating:</strong> 4/10</p>
 
       <p><strong>Platform:</strong> Steam, Xbox, PS5</p>
-      <p><strong>Genre:</strong> RPG, Open World</p>
-      <p><strong>Time Played:</strong> ~10 hours; Completed</p>
+      <p><strong>Genre:</strong> Adventure, Open World</p>
+      <p><strong>Time Played:</strong> 10 hours; Completed</p>
 
       <p><strong>Quick Summary:</strong>
         Assassin's Creed 1 is a great game that is a great way to experience the world of the Assassin's Creed series.
@@ -648,15 +754,17 @@
     </section>
 
     <!-- Fallout 4 review -->
-    <section class="box game-review" data-genre="RPG Open Survival" data-mode="Singleplayer">
-      <h3>Game Title: <span class="game-title"><a href="https://store.steampowered.com/app/377160/Fallout_4/" style="color:white;">Fallout 4</a></span></h3>
+    <section class="box game-review" data-genre="Open Survival" data-mode="Singleplayer"
+      data-release-date="2015-11-10">
+      <h3>Game Title: <span class="game-title"><a href="https://store.steampowered.com/app/377160/Fallout_4/"
+            style="color:white;">Fallout 4</a></span></h3>
       <img src="./IMG/Game Review Covers/Fallout4.png" alt="Fallout 4 cover" class="game-cover">
 
       <p><strong>Rating:</strong> 7/10</p>
 
       <p><strong>Platform:</strong> Steam, Xbox, PS5</p>
-      <p><strong>Genre:</strong> RPG, Open World, Survival</p>
-      <p><strong>Time Played:</strong> ~10 hours; Completed</p>
+      <p><strong>Genre:</strong> Open World, Survival</p>
+      <p><strong>Time Played:</strong> 10 hours; Completed</p>
 
       <p><strong>Quick Summary:</strong>
         Fallout 4 is a great game that falls short of it's predecessors.
@@ -686,82 +794,9 @@
       </p>
     </section>
 
-    <!-- Tinkertown review -->
-    <section class="box game-review" data-genre="RPG Open Survival" data-mode="Singleplayer CoOp Multiplayer">
-      <h3>Game Title: <span class="game-title"><a href="https://store.steampowered.com/app/1276660/Tinkertown/" style="color:white;">Tinkertown</a></span></h3>
-      <img src="./IMG/Game Review Covers/Tinkertown.png" alt="Tinkertown cover" class="game-cover">
 
-      <p><strong>Rating:</strong> 5/10</p>
 
-      <p><strong>Platform:</strong> Steam, Xbox, PS5</p>
-      <p><strong>Genre:</strong> Open World, Survival</p>
-      <p><strong>Time Played:</strong> ~22 hours; Ongoing</p>
 
-      <p><strong>Quick Summary:</strong>
-        Tinkertown is your traditional open world survival game. You can build your own 2D world and explore it with
-        your friends.
-      </p>
-
-      <p><strong>What I Loved:</strong></p>
-      <ul>
-        <li>The art style is very unique and fun</li>
-        <li>There's always an adventure around the corner</li>
-      </ul>
-      <p><strong>What Could Be Better:</strong></p>
-      <ul>
-        <li>The game lacks a good crafting system</li>
-        <li>Other 2D games can do what this game does better</li>
-        <li>The game is very repetitive</li>
-        <li>At the time I played it, the game was very buggy</li>
-        <li>Lack of variety behind the combat</li>
-
-      </ul>
-
-      <p><strong>Would I Recommend It?</strong>
-        Yes and no. If the game has fixed it's bugs, it's worth a play. There's a lot to do, and a good mix-up if you've
-        been playing a lot of the other mainstream survival co-op games. I really enjoyed playing this.
-      </p>
-    </section>
-
-        <!-- TPoG review -->
-    <section id="TPoG" class="box game-review" data-genre="Story Adventure" data-mode="Singleplayer">
-      <h3>Game Title: <span class="game-title"><a href="https://danieloschepkov.itch.io/the-photo-of-god" style="color:white;">The Photo of God</a></span></h3>
-      <img src="./IMG/Game Review Covers/TPoG.png" alt="TPoG cover" class="game-cover">
-
-      <p><strong>Rating:</strong> 6/10</p>
-
-      <p><strong>Platform:</strong> PC</p>
-      <p><strong>Genre:</strong> Story-Driven, Adventure </p>
-      <p><strong>Time Played:</strong> 10 minutes; Completed</p>
-
-      <p><strong>Quick Summary:</strong>
-        A short narrative-driven atmospheric horror game, where you play as an old photographer, who decided to take the photo of God one day.
-        Take your camera and you are ready to go. Birds will lead you.
-      </p>
-
-      <p><strong>What I Loved:</strong></p>
-      <ul>
-        <li>Deep Storytelling</li>
-        <li>Good, solid slow progression</li>
-        <li>Engaging tutorial sequence</li>
-        <li>Practically a puzzle within the first few minutes</li>
-        <li>Cute birds</li>
-        <li>Unique art style</li>
-        <li>Good SFX selection</li>
-      </ul>
-      <p><strong>What Could Be Better:</strong></p>
-      <ul>
-        <li>Character feels small/short</li>
-        <li>Disproportionate to the scenery at times</li>
-        <li>Some SFXs are too loud while others are too quiet</li>
-        <li>Niche, some people may not find it entertaining</li>
-
-      </ul>
-
-      <p><strong>Would I Recommend It?</strong>
-        If you're interested in this kind of genre already, yes. If you're not, I wouldn't recommend it. It can be a bit slow and the story is a bit short. However, the developer behind it clearly has a lot of potential and talent. I'm looking forward to seeing what they produce next.
-      </p>
-    </section>
 
 
 
@@ -769,7 +804,7 @@
   </main>
 
 
-  <!-- Tinkertown, Persona 4 Golden, Persona 3 Reload, Corekeeper,   -->
+  <!-- Persona 4 Golden, Persona 3 Reload, Corekeeper,   -->
   <!--
   <section class="box game-review">
     <h3>Game Title: <span class="game-title">Persona 5</span></h3>
@@ -787,18 +822,79 @@
     function applyFilters() {
       const genre = document.getElementById("genreFilter").value;
       const mode = document.getElementById("modeFilter").value;
+      const sortBy = document.getElementById("sortBy").value;
 
       const reviews = document.querySelectorAll('.game-review');
+      const reviewsArray = Array.from(reviews);
+      let visibleCount = 0;
 
-      reviews.forEach(review => {
+      // First apply filters
+      reviewsArray.forEach(review => {
         const genres = review.getAttribute('data-genre').split(" ");
         const modes = review.getAttribute('data-mode').split(" ");
 
         const genreMatch = (genre === "all" || genres.includes(genre));
         const modeMatch = (mode === "all" || modes.includes(mode));
+        const isVisible = genreMatch && modeMatch;
 
-        review.style.display = (genreMatch && modeMatch) ? 'block' : 'none';
+        review.style.display = isVisible ? 'block' : 'none';
+        if (isVisible) visibleCount++;
       });
+
+      // Update the review count display
+      const countDisplay = document.getElementById('reviewCount');
+      if (genre === 'all' && mode === 'all') {
+        countDisplay.textContent = `Showing all reviews (${visibleCount} total)`;
+      } else {
+        const filters = [];
+        if (genre !== 'all') filters.push(genre);
+        if (mode !== 'all') filters.push(mode);
+        countDisplay.textContent = `Showing ${filters.join(' + ')} reviews (${visibleCount} of ${reviews.length} total)`;
+      }
+
+      // Then apply sorting if selected
+      if (sortBy !== 'none') {
+        const sortedReviews = reviewsArray.sort((a, b) => {
+          if (sortBy === 'ratingHigh' || sortBy === 'ratingLow') {
+            const getRating = (review) => {
+              const ratingText = review.querySelector('p strong')?.textContent;
+              if (ratingText?.includes('Rating')) {
+                const rating = parseFloat(review.querySelector('p')?.textContent.split('/')[0].replace('Rating:', '').trim());
+                return isNaN(rating) ? 0 : rating;
+              }
+              return 0;
+            };
+
+            const ratingA = getRating(a);
+            const ratingB = getRating(b);
+            return sortBy === 'ratingHigh' ? ratingB - ratingA : ratingA - ratingB;
+          }
+
+          if (sortBy === 'timePlayed') {
+            const getHours = (review) => {
+              const timeText = Array.from(review.querySelectorAll('p'))
+                .find(p => p.textContent.includes('Time Played'))?.textContent.replace(/,/g, '') || '';
+              const match = timeText.match(/(\d+)/);
+              return match ? parseFloat(match[0]) : 0;
+            };
+
+            const hoursA = getHours(a);
+            const hoursB = getHours(b);
+            return hoursB - hoursA; // Sort by most time played first
+          }
+
+          if (sortBy === 'releaseDate') {
+            const dateA = new Date(a.getAttribute('data-release-date'));
+            const dateB = new Date(b.getAttribute('data-release-date'));
+            return dateB - dateA; // Most recent first
+          }
+
+          return 0;
+        });
+
+        const container = reviews[0].parentNode;
+        sortedReviews.forEach(review => container.appendChild(review));
+      }
     }
   </script>
 </body>

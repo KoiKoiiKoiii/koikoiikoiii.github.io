@@ -43,15 +43,6 @@ function scrollFunction() {
 
 window.addEventListener("scroll", scrollFunction);
 
-
-
-
-
-
-
-
-
-
 const menuButton = document.querySelector('.mobile-menu-button');
 const navbar = document.querySelector('.navbar');
 const navLinks = document.querySelectorAll('.link-holder a');
