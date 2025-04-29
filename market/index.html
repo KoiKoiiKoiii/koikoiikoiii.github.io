@@ -1,0 +1,269 @@
+<html>
+    <head>
+        <title>FFXIV Market Flipping Calculator</title>
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: linear-gradient(135deg, #575757 0%, #161616 100%);
+                color: #e6e6e6;
+                margin: 0;
+                padding: 20px;
+                min-height: 100vh;
+            }
+
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                background: rgba(26, 26, 46, 0.8);
+                padding: 30px;
+                border-radius: 15px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+                border: 1px solid #a6e6ff;
+            }
+
+            h1 {
+                text-align: center;
+                color: #ffffff;
+                margin-bottom: 30px;
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+                font-size: 2.5em;
+            }
+
+            .calculator {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .input-group {
+                display: flex;
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .input-wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            label {
+                color: #00ccff;
+                font-size: 0.9em;
+                font-weight: bold;
+            }
+
+            input {
+                padding: 12px 15px;
+                border: 2px solid #4a636a;
+                border-radius: 8px;
+                background: rgba(26, 26, 46, 0.5);
+                color: #e6e6e6;
+                font-size: 1.1em;
+                width: 200px;
+                transition: all 0.3s ease;
+            }
+
+            input:focus {
+                outline: none;
+                border-color: #00ffff;
+                box-shadow: 0 0 10px rgba(0, 255, 234, 0.2);
+            }
+
+            input::placeholder {
+                color: #888;
+            }
+
+            button {
+                padding: 12px 25px;
+                background: linear-gradient(135deg, #ffffff 0%, #d4fffb 100%);
+                border: none;
+                border-radius: 8px;
+                color: #1a1a2e;
+                font-weight: bold;
+                font-size: 1.1em;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin: 10px auto;
+                display: block;
+            }
+
+            button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(0, 195, 255, 0.3);
+            }
+
+            #flippingResult {
+                background: rgba(26, 26, 46, 0.5);
+                padding: 20px;
+                border-radius: 8px;
+                margin-top: 20px;
+                border: 1px solid #4a4a6a;
+                font-size: 1.1em;
+                line-height: 1.6;
+            }
+
+            #flippingResult strong {
+                color: #00ccff;
+            }
+
+            .github-link {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                padding: 8px 16px;
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 6px;
+                color: #ffffff;
+                text-decoration: none;
+                font-size: 14px;
+                transition: all 0.3s ease;
+            }
+
+            .github-link:hover {
+                background: rgba(255, 255, 255, 0.2);
+                transform: translateY(-2px);
+            }
+
+            .github-link svg {
+                width: 20px;
+                height: 20px;
+                fill: currentColor;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Market Flipping Calculator</h1>
+            <div class="calculator">
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <label for="purchasePrice">Purchase Price</label>
+                        <input type="number" id="purchasePrice">
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="sellingPrice">Selling Price</label>
+                        <input type="number" id="sellingPrice">
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" id="quantity" value="1">
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="availableGil">Available Gil</label>
+                        <input type="number" id="availableGil">
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button onclick="calculateFlipping()">Calculate Profit</button>
+                    <button onclick="clearValues()" class="clear-button">Clear Values</button>
+                </div>
+                <div id="flippingResult"></div>
+            </div>
+        </div>
+
+        <a href="https://github.com/KoiKoiiKoiii/" class="github-link" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 16 16" width="16" height="16">
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+            </svg>
+            View on GitHub
+        </a>
+
+        <script>
+            // Load saved values when page loads
+            window.onload = function() {
+                const savedPurchasePrice = localStorage.getItem('purchasePrice');
+                const savedSellingPrice = localStorage.getItem('sellingPrice');
+                const savedQuantity = localStorage.getItem('quantity');
+                const savedAvailableGil = localStorage.getItem('availableGil');
+                const savedResult = localStorage.getItem('result');
+
+                if (savedPurchasePrice) document.getElementById('purchasePrice').value = savedPurchasePrice;
+                if (savedSellingPrice) document.getElementById('sellingPrice').value = savedSellingPrice;
+                if (savedQuantity) document.getElementById('quantity').value = savedQuantity;
+                if (savedAvailableGil) document.getElementById('availableGil').value = savedAvailableGil;
+                if (savedResult) document.getElementById('flippingResult').innerHTML = savedResult;
+            };
+
+            function calculateFlipping() {
+                const purchasePrice = parseFloat(document.getElementById('purchasePrice').value);
+                const sellingPrice = parseFloat(document.getElementById('sellingPrice').value);
+                const quantity = parseFloat(document.getElementById('quantity').value);
+                const availableGil = parseFloat(document.getElementById('availableGil').value);
+                
+                if (isNaN(purchasePrice) || isNaN(sellingPrice) || isNaN(quantity)) {
+                    document.getElementById('flippingResult').innerHTML = "Please enter valid numbers";
+                    return;
+                }
+                
+                const taxRate = 0.05; // 5% tax
+                const totalCost = purchasePrice * quantity;
+                const totalCostWithTax = totalCost * (1 + taxRate);
+                const totalRevenue = sellingPrice * quantity;
+                const profit = totalRevenue - totalCostWithTax;
+                const profitPercentage = (profit / totalCostWithTax) * 100;
+                
+                const formattedCost = totalCost.toLocaleString();
+                const formattedCostWithTax = totalCostWithTax.toLocaleString();
+                const formattedRevenue = totalRevenue.toLocaleString();
+                const formattedProfit = profit.toLocaleString();
+                const formattedTax = (totalCost * taxRate).toLocaleString();
+
+                let resultHTML = 
+                    `<strong>Base Cost:</strong> ${formattedCost} Gil<br>
+                     <strong>Tax (5%):</strong> ${formattedTax} Gil<br>
+                     <strong>Total Cost (with tax):</strong> ${formattedCostWithTax} Gil<br>
+                     <strong>Total Revenue:</strong> ${formattedRevenue} Gil<br>
+                     <strong>Profit:</strong> ${formattedProfit} Gil<br>
+                     <strong>Profit Percentage:</strong> ${profitPercentage.toFixed(2)}%`;
+
+                // Calculate maximum items that can be bought if availableGil is provided
+                if (!isNaN(availableGil) && availableGil > 0) {
+                    const maxItems = Math.floor(availableGil / (purchasePrice * (1 + taxRate)));
+                    const maxItemsCost = maxItems * purchasePrice;
+                    const maxItemsCostWithTax = maxItemsCost * (1 + taxRate);
+                    const maxItemsRevenue = maxItems * sellingPrice;
+                    const maxItemsProfit = maxItemsRevenue - maxItemsCostWithTax;
+                    const maxItemsProfitPercentage = (maxItemsProfit / maxItemsCostWithTax) * 100;
+
+                    resultHTML += `<br><br><strong>With ${availableGil.toLocaleString()} Gil:</strong><br>
+                                  <strong>Maximum Items You Can Buy:</strong> ${maxItems.toLocaleString()}<br>
+                                  <strong>Total Cost (with tax):</strong> ${maxItemsCostWithTax.toLocaleString()} Gil<br>
+                                  <strong>Potential Revenue:</strong> ${maxItemsRevenue.toLocaleString()} Gil<br>
+                                  <strong>Potential Profit:</strong> ${maxItemsProfit.toLocaleString()} Gil<br>
+                                  <strong>Potential Profit Percentage:</strong> ${maxItemsProfitPercentage.toFixed(2)}%`;
+                }
+
+                document.getElementById('flippingResult').innerHTML = resultHTML;
+
+                // Save values to localStorage
+                localStorage.setItem('purchasePrice', purchasePrice);
+                localStorage.setItem('sellingPrice', sellingPrice);
+                localStorage.setItem('quantity', quantity);
+                localStorage.setItem('availableGil', availableGil);
+                localStorage.setItem('result', resultHTML);
+            }
+
+            function clearValues() {
+                // Clear input fields
+                document.getElementById('purchasePrice').value = '';
+                document.getElementById('sellingPrice').value = '';
+                document.getElementById('quantity').value = '1';
+                document.getElementById('availableGil').value = '';
+                document.getElementById('flippingResult').innerHTML = '';
+
+                // Clear localStorage
+                localStorage.removeItem('purchasePrice');
+                localStorage.removeItem('sellingPrice');
+                localStorage.removeItem('quantity');
+                localStorage.removeItem('availableGil');
+                localStorage.removeItem('result');
+            }
+        </script>
+    </body>
+</html>
