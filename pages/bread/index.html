@@ -133,6 +133,10 @@
                 <label for="price">Price of Bread (total)</label>
                 <input type="number" id="price" step="0.01" placeholder="e.g., 3.50">
             </div>
+            <div class="input-wrapper">
+                <label for="targetDate">Next Bread Buy Date</label>
+                <input type="date" id="targetDate">
+            </div>            
         </div>
         
         <button onclick="calculateBreadDuration()">Calculate Duration</button>
@@ -142,60 +146,99 @@
 </div>
 
 <script>
-    // Load saved values on page load
     function calculateBreadDuration() {
-    const slices = parseFloat(document.getElementById('slices').value);
-    const usage = parseFloat(document.getElementById('usage').value);
-    const price = parseFloat(document.getElementById('price').value);
-
-    if (isNaN(slices) || isNaN(usage) || slices <= 0 || usage <= 0) {
-        document.getElementById('result').innerHTML = "Please enter valid positive numbers.";
-        return;
+        const slices = parseFloat(document.getElementById('slices').value);
+        const usage = parseFloat(document.getElementById('usage').value);
+        const price = parseFloat(document.getElementById('price').value);
+        const targetDateValue = document.getElementById('targetDate').value;
+    
+        if (isNaN(slices) || isNaN(usage) || slices <= 0 || usage <= 0) {
+            document.getElementById('result').innerHTML = "Please enter valid positive numbers for slices and usage.";
+            return;
+        }
+    
+        const days = slices / usage;
+        const roundedDays = Math.floor(days);
+        const leftoverSlices = slices % usage;
+    
+        const today = new Date();
+        const depletionDate = new Date(today);
+        depletionDate.setDate(today.getDate() + roundedDays);
+    
+        const options = { month: 'long', day: 'numeric', year: 'numeric' };
+        const formattedDepletionDate = depletionDate.toLocaleDateString(undefined, options);
+    
+        // Calculate daily bread cost if price is provided
+        let dailyCost = null;
+        if (!isNaN(price) && price > 0) {
+            const pricePerSlice = price / slices;
+            dailyCost = pricePerSlice * usage;
+        }
+    
+        let resultHTML = `<strong>Total Slices:</strong> ${slices}<br>
+                          <strong>Slices Used Per Day:</strong> ${usage}<br>
+                          <strong>Your bread will last:</strong> ${roundedDays} day(s)`;
+    
+        if (leftoverSlices > 0) {
+            resultHTML += ` and you'll have ${leftoverSlices} slice(s) left on the last day.`;
+        }
+    
+        resultHTML += `<br><strong>Bread will run out on:</strong> ${formattedDepletionDate}`;
+    
+        if (dailyCost !== null) {
+            resultHTML += `<br><strong>Daily Bread Cost:</strong> $${dailyCost.toFixed(2)} per day`;
+        }
+    
+        // New calculation: How much bread needed until next bread-buy date
+        if (targetDateValue) {
+            const targetDate = new Date(targetDateValue);
+            targetDate.setHours(0,0,0,0); // normalize time
+            const diffTime = targetDate - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+            if (diffDays > 0) {
+                const totalSlicesNeeded = usage * diffDays;
+                const additionalSlicesNeeded = Math.max(0, totalSlicesNeeded - slices);
+                resultHTML += `<br><br><strong>To last until ${targetDate.toLocaleDateString(undefined, options)}:</strong> ${totalSlicesNeeded} slices needed`;
+                if (additionalSlicesNeeded > 0) {
+                    resultHTML += `<br><strong>You need to buy:</strong> ${additionalSlicesNeeded} more slice(s)`;
+                } else {
+                    resultHTML += `<br><strong>You already have enough bread!</strong>`;
+                }
+            } else {
+                resultHTML += `<br><br><strong>Please enter a future date for the next bread-buy date.</strong>`;
+            }
+        }
+    
+        document.getElementById('result').innerHTML = resultHTML;
+    
+        // Save to localStorage
+        localStorage.setItem('slices', slices);
+        localStorage.setItem('usage', usage);
+        localStorage.setItem('price', price);
+        localStorage.setItem('targetDate', targetDateValue);
+        localStorage.setItem('breadResult', resultHTML);
     }
-
-    const days = slices / usage;
-    const roundedDays = Math.floor(days);
-    const leftoverSlices = slices % usage;
-
-    // Calculate the date when the bread will run out
-    const today = new Date();
-    const depletionDate = new Date(today);
-    depletionDate.setDate(today.getDate() + roundedDays);
-
-    const options = { month: 'long', day: 'numeric', year: 'numeric' };
-    const formattedDate = depletionDate.toLocaleDateString(undefined, options);
-
-    // Calculate daily bread cost if price is provided
-    let dailyCost = null;
-    if (!isNaN(price) && price > 0) {
-        const pricePerSlice = price / slices;
-        dailyCost = pricePerSlice * usage;
+    
+    function clearValues() {
+        document.getElementById('slices').value = '';
+        document.getElementById('usage').value = '';
+        document.getElementById('price').value = '';
+        document.getElementById('targetDate').value = '';
+        document.getElementById('result').innerHTML = '';
+        localStorage.clear();
     }
-
-    let resultHTML = `<strong>Total Slices:</strong> ${slices}<br>
-                      <strong>Slices Used Per Day:</strong> ${usage}<br>
-                      <strong>Your bread will last:</strong> ${roundedDays} day(s)`;
-
-    if (leftoverSlices > 0) {
-        resultHTML += ` and you'll have ${leftoverSlices} slice(s) left on the last day.`;
+    
+    // Load saved values on page load
+    window.onload = function() {
+        document.getElementById('slices').value = localStorage.getItem('slices') || '';
+        document.getElementById('usage').value = localStorage.getItem('usage') || '';
+        document.getElementById('price').value = localStorage.getItem('price') || '';
+        document.getElementById('targetDate').value = localStorage.getItem('targetDate') || '';
+        document.getElementById('result').innerHTML = localStorage.getItem('breadResult') || '';
     }
-
-    resultHTML += `<br><strong>Bread will run out on:</strong> ${formattedDate}`;
-
-    if (dailyCost !== null) {
-        resultHTML += `<br><strong>Daily Bread Cost:</strong> $${dailyCost.toFixed(2)} per day`;
-    }
-
-    document.getElementById('result').innerHTML = resultHTML;
-
-    // Save to localStorage
-    localStorage.setItem('slices', slices);
-    localStorage.setItem('usage', usage);
-    localStorage.setItem('price', price);
-    localStorage.setItem('breadResult', resultHTML);
-}
-
-</script>
+    </script>
+    
 
 </body>
 </html>
