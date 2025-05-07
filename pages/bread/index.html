@@ -1,0 +1,201 @@
+<html>
+<head>
+    <title>Bread Duration Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #575757 0%, #161616 100%);
+            color: #e6e6e6;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(26, 26, 46, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid #a6e6ff;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            font-size: 2.5em;
+        }
+
+        .calculator {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .input-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        label {
+            color: #00ccff;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 12px 15px;
+            border: 2px solid #4a636a;
+            border-radius: 8px;
+            background: rgba(26, 26, 46, 0.5);
+            color: #e6e6e6;
+            font-size: 1.1em;
+            width: 100%;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #00ffff;
+            box-shadow: 0 0 10px rgba(0, 255, 234, 0.2);
+        }
+
+        input::placeholder {
+            color: #888;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #ffffff 0%, #d4fffb 100%);
+            border: none;
+            border-radius: 8px;
+            color: #1a1a2e;
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px auto;
+            display: block;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 195, 255, 0.3);
+        }
+
+        #result {
+            background: rgba(26, 26, 46, 0.5);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid #4a4a6a;
+            font-size: 1.1em;
+            line-height: 1.6;
+            word-break: break-word;
+        }
+
+        #result strong {
+            color: #00ccff;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Bread Duration Calculator</h1>
+    <div class="calculator">
+        <div class="input-group">
+            <div class="input-wrapper">
+                <label for="slices">Number of Slices</label>
+                <input type="number" id="slices">
+            </div>
+            <div class="input-wrapper">
+                <label for="usage">Slices Used Per Day</label>
+                <input type="number" id="usage">
+            </div>
+            <div class="input-wrapper">
+                <label for="price">Price of Bread (total)</label>
+                <input type="number" id="price" step="0.01" placeholder="e.g., 3.50">
+            </div>
+        </div>
+        
+        <button onclick="calculateBreadDuration()">Calculate Duration</button>
+        <button onclick="clearValues()">Clear Values</button>
+        <div id="result"></div>
+    </div>
+</div>
+
+<script>
+    // Load saved values on page load
+    function calculateBreadDuration() {
+    const slices = parseFloat(document.getElementById('slices').value);
+    const usage = parseFloat(document.getElementById('usage').value);
+    const price = parseFloat(document.getElementById('price').value);
+
+    if (isNaN(slices) || isNaN(usage) || slices <= 0 || usage <= 0) {
+        document.getElementById('result').innerHTML = "Please enter valid positive numbers.";
+        return;
+    }
+
+    const days = slices / usage;
+    const roundedDays = Math.floor(days);
+    const leftoverSlices = slices % usage;
+
+    // Calculate the date when the bread will run out
+    const today = new Date();
+    const depletionDate = new Date(today);
+    depletionDate.setDate(today.getDate() + roundedDays);
+
+    const options = { month: 'long', day: 'numeric', year: 'numeric' };
+    const formattedDate = depletionDate.toLocaleDateString(undefined, options);
+
+    // Calculate daily bread cost if price is provided
+    let dailyCost = null;
+    if (!isNaN(price) && price > 0) {
+        const pricePerSlice = price / slices;
+        dailyCost = pricePerSlice * usage;
+    }
+
+    let resultHTML = `<strong>Total Slices:</strong> ${slices}<br>
+                      <strong>Slices Used Per Day:</strong> ${usage}<br>
+                      <strong>Your bread will last:</strong> ${roundedDays} day(s)`;
+
+    if (leftoverSlices > 0) {
+        resultHTML += ` and you'll have ${leftoverSlices} slice(s) left on the last day.`;
+    }
+
+    resultHTML += `<br><strong>Bread will run out on:</strong> ${formattedDate}`;
+
+    if (dailyCost !== null) {
+        resultHTML += `<br><strong>Daily Bread Cost:</strong> $${dailyCost.toFixed(2)} per day`;
+    }
+
+    document.getElementById('result').innerHTML = resultHTML;
+
+    // Save to localStorage
+    localStorage.setItem('slices', slices);
+    localStorage.setItem('usage', usage);
+    localStorage.setItem('price', price);
+    localStorage.setItem('breadResult', resultHTML);
+}
+
+</script>
+
+</body>
+</html>
