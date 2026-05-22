@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akinator Lite</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .app {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      width: 95%;
+      max-width: 400px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    button {
+      margin: 10px;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .yes { background: #4CAF50; color: white; }
+    .no { background: #f44336; color: white; }
+    input {
+      padding: 10px;
+      width: 90%;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <h2>Akinator Lite</h2>
+    <p id="question">Think of a character...</p>
+    <div id="buttons">
+      <button class="yes" onclick="answer(true)">Yes</button>
+      <button class="no" onclick="answer(false)">No</button>
+    </div>
+    <div id="inputArea" style="display:none;"></div>
+  </div>
+
+  <script>
+    class Node {
+      constructor(data, isQuestion) {
+        this.data = data;
+        this.isQuestion = isQuestion;
+        this.yes = null;
+        this.no = null;
+      }
+    }
+
+    let root = loadTree() || defaultTree();
+    let current = root;
+
+    function defaultTree() {
+      let root = new Node("Is the person male?", true);
+      root.yes = new Node("Bryson", false);
+      root.no = new Node("Mindie", false);
+      return root;
+    }
+
+    function saveTree() {
+      localStorage.setItem("akinatorTree", JSON.stringify(root));
+    }
+
+    function loadTree() {
+      let data = localStorage.getItem("akinatorTree");
+      return data ? JSON.parse(data) : null;
+    }
+
+    function showQuestion(text) {
+      document.getElementById("question").innerText = text;
+    }
+
+    function answer(ans) {
+      if (current.isQuestion) {
+        current = ans ? current.yes : current.no;
+        nextStep();
+      } else {
+        if (ans) {
+          showQuestion("I guessed it! 🎉");
+          resetGame();
+        } else {
+          learnNewCharacter();
+        }
+      }
+    }
+
+    function nextStep() {
+      if (current.isQuestion) {
+        showQuestion(current.data);
+      } else {
+        showQuestion("Is it " + current.data + "?");
+      }
+    }
+
+    function learnNewCharacter() {
+      document.getElementById("buttons").style.display = "none";
+      let inputArea = document.getElementById("inputArea");
+      inputArea.style.display = "block";
+
+      inputArea.innerHTML = `
+        <p>Who were you thinking of?</p>
+        <input id="person" placeholder="Name">
+        <p>Give a question to distinguish them:</p>
+        <input id="questionInput" placeholder="Question">
+        <p>For your character, is the answer YES?</p>
+        <button class="yes" onclick="submitLearning(true)">Yes</button>
+        <button class="no" onclick="submitLearning(false)">No</button>
+      `;
+    }
+
+    function submitLearning(answerForNew) {
+      let newPerson = document.getElementById("person").value;
+      let newQuestion = document.getElementById("questionInput").value;
+
+      let oldData = current.data;
+
+      current.data = newQuestion;
+      current.isQuestion = true;
+
+      let newNode = new Node(newPerson, false);
+      let oldNode = new Node(oldData, false);
+
+      if (answerForNew) {
+        current.yes = newNode;
+        current.no = oldNode;
+      } else {
+        current.yes = oldNode;
+        current.no = newNode;
+      }
+
+      saveTree();
+
+      showQuestion("Learned something new! 🎓");
+      setTimeout(resetGame, 1500);
+    }
+
+    function resetGame() {
+      current = root;
+      document.getElementById("buttons").style.display = "block";
+      document.getElementById("inputArea").style.display = "none";
+      nextStep();
+    }
+
+    nextStep();
+  </script>
+</body>
+</html>
