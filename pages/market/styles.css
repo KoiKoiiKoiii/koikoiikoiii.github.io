@@ -211,3 +211,15 @@ h2 .copy-icon {
     font-size: 1.1rem;
     color: var(--accent-text);
 }
+
+.load-more-container {
+    display: flex;
+    justify-content: center;
+    padding: 24px 0 40px;
+}
+
+#loadMoreBtn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    cursor: pointer;
+}
